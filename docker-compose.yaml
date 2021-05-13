@@ -1,0 +1,19 @@
+version: "3.9"
+
+volumes:
+  db_data:
+
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: auth_sys_go_react
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+    ports:
+      - 3306:3306
